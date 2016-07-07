@@ -29,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setTitle("Lista de usuários");
+
+        // Verificar se já existem dados salvos
+        UserTasks userTasks = new UserTasks();
+        // Busca dados armazenados e atribui ao adapter que mostrará lista na tela
+        AdapterUser adapterUser = new AdapterUser(userTasks.getUsers(this), this);
+        ListView listView = (ListView) findViewById(R.id.listUsers);
+        if (listView != null) {
+            listView.setAdapter(adapterUser);
+        }
     }
 
     @Override
